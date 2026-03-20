@@ -1,0 +1,319 @@
+/* 自定义样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 导航栏样式 */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, #3B82F6, #8B5CF6);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* 英雄区域动画 */
+#home {
+    position: relative;
+    overflow: hidden;
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgb(59,130,246);stop-opacity:0.1" /><stop offset="100%" style="stop-color:rgb(139,92,246);stop-opacity:0.1" /></linearGradient></defs><rect width="1200" height="600" fill="url(%23grad1)" /><circle cx="200" cy="150" r="80" fill="white" opacity="0.1" /><circle cx="1000" cy="450" r="120" fill="white" opacity="0.1" /><circle cx="600" cy="300" r="60" fill="white" opacity="0.1" /></svg>') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* 头像动画 */
+.w-32.h-32.mx-auto.bg-white.rounded-full {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* 卡片悬停效果 */
+.bg-white.rounded-lg.shadow-lg {
+    transition: all 0.3s ease;
+}
+
+.bg-white.rounded-lg.shadow-lg:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* 技能标签动画 */
+.px-3.py-1.bg-blue-100.text-blue-600.rounded-full {
+    transition: all 0.3s ease;
+}
+
+.px-3.py-1.bg-blue-100.text-blue-600.rounded-full:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(59,130,246,0.3);
+}
+
+/* 表单样式 */
+#contact-form input,
+#contact-form textarea {
+    backdrop-filter: blur(10px);
+}
+
+#contact-form input::placeholder,
+#contact-form textarea::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+/* 按钮动画 */
+button {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* 滚动显示动画 */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 响应式设计优化 */
+@media (max-width: 768px) {
+    .text-5xl {
+        font-size: 2.5rem;
+    }
+    
+    .text-4xl {
+        font-size: 2rem;
+    }
+    
+    .text-xl {
+        font-size: 1.1rem;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* 加载动画 */
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3B82F6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 成功消息样式 */
+.success-message {
+    background: linear-gradient(45deg, #10B981, #059669);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 错误消息样式 */
+.error-message {
+    background: linear-gradient(45deg, #EF4444, #DC2626);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    animation: slideIn 0.5s ease;
+}
+
+/* 进度条样式 */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(45deg, #3B82F6, #8B5CF6);
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+/* 时间线样式 */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(45deg, #3B82F6, #8B5CF6);
+}
+
+.timeline-item {
+    position: relative;
+    margin: 2rem 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    background: #3B82F6;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 社交媒体图标动画 */
+.social-icons a {
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px) scale(1.1);
+}
+
+/* 打字机效果 */
+.typewriter {
+    overflow: hidden;
+    border-right: 2px solid #3B82F6;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #3B82F6; }
+}
+
+/* 视差滚动效果 */
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #3B82F6, #8B5CF6);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #2563EB, #7C3AED);
+}
